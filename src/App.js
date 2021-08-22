@@ -1,5 +1,10 @@
+import Routing from "./pages/routing";
 function App() {
-  return <div>Hello world</div>;
+  return (
+    <div>
+      <Routing />
+    </div>
+  );
 }
 
 export default App;

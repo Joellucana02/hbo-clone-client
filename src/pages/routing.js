@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./home";
 import Login from "./login";
-import Register from "./registrer";
-import Feed from "./feed";
-import User from "./user";
+import Register from "./register";
+import Play from "./play";
 import Me from "./me";
 
 const routing = () => {
@@ -14,10 +13,9 @@ const routing = () => {
               renders the first one that matches the current URL. */}
       <Switch>
         <Route exact path="/" children={<Home />} />
-        <Route path="/feed" children={<Feed />} />
+        <Route path="/play" children={<Play />} />
         <Route path="/register" children={<Register />} />
         <Route path="/login" children={<Login />} />
-        <Route path="/user" children={<User />} />
         <Route path="/me" children={<Me />} />
       </Switch>
     </Router>
