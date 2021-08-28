@@ -1,7 +1,7 @@
 import React from "react";
 
 const MoviesArr = () => {
-  return <div></div>;
+  return <div>movies</div>;
 };
 
 export default MoviesArr;

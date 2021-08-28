@@ -1,4 +1,6 @@
 import React from "react";
+import NavBar from "./../components/playPage/Navbar";
+import MainMovie from "./../components/playPage/MainMovie";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiData from "../api/apiData";
@@ -10,15 +12,6 @@ const {
   TESTING_TOKEN,
 } = apiData();
 
-const pageNum = 1;
-const pageNumS = 1;
-const pageNumSearch = 1;
-const queryMovie = "kong";
-
-const arrByPopularityM = `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page${pageNum}`;
-const arrByPopularityKids = `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page${pageNum}`;
-const searchMovie = `${ROOT_API_MOVIES}/search/movie?api_key=${API_KEY}&query=${queryMovie}&page=${pageNumSearch}`;
-const arrByPopularityS = `${ROOT_API_TV_SHOWS}/most-popular?page=${pageNumS}`;
 const header = {
   headers: {
     authorization: `Bearer ${TESTING_TOKEN}`,
@@ -26,16 +19,52 @@ const header = {
 };
 const Play = () => {
   let [display, setDisplay] = useState(null);
+
+  let pageNumS = 1;
+  let pageNumSearch = 1;
+  let queryMovie = "kong";
+
+  let arrByPopularityM = (num) => {
+    return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${num}`;
+  };
+  let arrByPopularityKids = (num) => {
+    return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page${num}`;
+  };
+  let searchMovie = `${ROOT_API_MOVIES}/search/movie?api_key=${API_KEY}&query=${queryMovie}&page=${pageNumSearch}`;
+  let arrByPopularityS = `${ROOT_API_TV_SHOWS}/most-popular?page=${pageNumS}`;
+
   useEffect(() => {
     const fetchApi = async () => {
-      const res = await axios.get(arrByPopularityS);
-      const data = await res.data;
-      setDisplay(data);
+      try {
+        const requestOne = await axios.get(arrByPopularityM(1));
+        const requestTwo = await axios.get(arrByPopularityS);
+        const requestThree = await axios.get(arrByPopularityKids(1));
+        const requestOne1 = await axios.get(arrByPopularityM(2));
+        const requestOne2 = await axios.get(arrByPopularityM(3));
+        const responses = await {
+          requestOne: requestOne.data,
+          requestTwo: requestTwo.data,
+          requestThree: requestThree.data,
+          requestOne1: requestOne1.data,
+          requestOne2: requestOne2.data,
+        };
+        setDisplay(responses);
+      } catch (error) {
+        console.log(error);
+      }
+      /* const res = await axios.get(arrByPopularityM);
+      const data = await res.data; */
     };
     fetchApi();
   }, []);
   console.log(display);
-  return <></>;
+  //console.log(display);
+  return (
+    <>
+      <NavBar />
+      {!display ? <h2>Loading...</h2> : <MainMovie movies={display} />}
+    </>
+  );
 };
 
 export default Play;

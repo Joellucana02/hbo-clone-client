@@ -1,7 +1,7 @@
 import React from "react";
 
 const SeriesArr = () => {
-  return <div></div>;
+  return <div>series</div>;
 };
 
 export default SeriesArr;
