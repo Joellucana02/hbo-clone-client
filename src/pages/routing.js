@@ -13,7 +13,6 @@ import Play from "./play";
 import Movies from "./Movies";
 import Series from "./Series";
 import Watch from "./Watch";
-import Info from "./Info";
 const routing = () => {
   const user = true;
   return (
@@ -25,7 +24,6 @@ const routing = () => {
         <Route path="/play" children={<Play />} />
         <Route path="/register" children={<Register />} />
         <Route path="/login" children={<Login />} />
-        <Route path="/info" children={<Info />} />
         <Route path="/series" children={<Series />} />
         <Route path="/movies" children={<Movies />} />
         <Route path="/watch" children={<Watch />} />

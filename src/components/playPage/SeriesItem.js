@@ -65,7 +65,16 @@ const SeriesItem = (props) => {
         />
         <div className="btn-container" style={btnContainer}>
           <Link to="/watch" style={{ marginRight: "10px" }}>
-            Watch
+            <button
+              className="save-btn"
+              onClick={(e) => {
+                console.log("save", myId);
+                e.stopPropagation();
+              }}
+              style={myBtn}
+            >
+              WATCH
+            </button>
           </Link>
           {/* <button
             className="watch-btn"
@@ -76,10 +85,13 @@ const SeriesItem = (props) => {
           </button> */}
           <button
             className="save-btn"
-            onClick={() => console.log("save", myId)}
+            onClick={(e) => {
+              console.log("save", myId);
+              e.stopPropagation();
+            }}
             style={myBtn}
           >
-            save
+            SAVE
           </button>
         </div>
       </div>

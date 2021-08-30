@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import apiData from "../../api/apiData";
+
 const {
   ROOT_API_MOVIES,
   ROOT_API_MOVIES_POSTER,
@@ -38,6 +40,9 @@ const Info = (props) => {
             <p style={{ width: "450px", marginBottom: "15px" }}>
               {fMovie.overview}
             </p>
+            <p style={{ wordSpacing: " 10px", marginBottom: "15px" }}>
+              1HR 58MIN 13+ 2013 HD 6.3
+            </p>
           </div>
           <div className="btn-box">
             <Link to="/watch" style={linkStyles}>
@@ -49,6 +54,23 @@ const Info = (props) => {
           </div>
         </div>
       </div>
+      <h2>{`Cast & Crew`}</h2>
+      <p>Ray Ferrier Tom Cruise</p>
+      <p>Rachel Ferrier Dakota Fanning</p>
+      <p>Mary Ann Miranda Otto</p>
+      <p>Ogilvy Tim Robbins</p>
+      <h2>{`Producers`}</h2>
+      <p>Producer Kathleen Kennedy</p>
+      <p>Producer Colin Wilson</p>
+      <p>Executive Producer Paula Wagner</p>
+      <h2>{`Directors`}</h2>
+      <p>Directed By Steven Spielberg</p>
+      <h2>{`Writters`}</h2>
+      <p>Screenplay By David Koepp</p>
+      <p>Based On The Novel ByH.G. Wells</p>
+      <h2>{`Rating Information`}</h2>
+
+      <p>13+</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import SeriesArr from "./SeriesArr";
 import apiData from "../../api/apiData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const {
@@ -14,6 +14,7 @@ const {
 const MoviesItem = (props) => {
   const [litBtn, setLitBtn] = useState("none");
   const [opaImg, setOpaImg] = useState("1");
+  const divRef = useRef();
   let myCardStyles = {
     //background: "#952",
     position: "relative",
@@ -35,6 +36,7 @@ const MoviesItem = (props) => {
     right: "20px",
     display: "flex",
     display: litBtn,
+    zIndex: "67",
   };
   const { myId, data } = props;
 
@@ -46,6 +48,7 @@ const MoviesItem = (props) => {
     setLitBtn("none");
     setOpaImg("1");
   };
+
   return (
     <>
       <div
@@ -55,6 +58,7 @@ const MoviesItem = (props) => {
         style={myCardStyles}
         onMouseOver={showBtn}
         onMouseOut={hideBtn}
+        onClick={() => console.log(divRef)}
       >
         <img
           src={ROOT_API_MOVIES_POSTER + data.poster_path}
@@ -65,7 +69,16 @@ const MoviesItem = (props) => {
         />
         <div className="btn-container" style={btnContainer}>
           <Link to="/watch" style={{ marginRight: "10px" }}>
-            Watch
+            <button
+              className="save-btn"
+              onClick={(e) => {
+                console.log("save", myId);
+                e.stopPropagation();
+              }}
+              style={myBtn}
+            >
+              WATCH
+            </button>
           </Link>
           {/* <button
             className="watch-btn"
@@ -76,10 +89,13 @@ const MoviesItem = (props) => {
           </button> */}
           <button
             className="save-btn"
-            onClick={() => console.log("save", myId)}
+            onClick={(e) => {
+              console.log("save", myId);
+              e.stopPropagation();
+            }}
             style={myBtn}
           >
-            save
+            SAVE
           </button>
         </div>
       </div>
