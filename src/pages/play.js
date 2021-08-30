@@ -62,10 +62,10 @@ const Play = () => {
   console.log(display);
   //console.log(display);
   return (
-    <>
+    <div>
       <NavBar />
       {!display ? <h2>Loading...</h2> : <MainMovie movies={display} />}
-    </>
+    </div>
   );
 };
 

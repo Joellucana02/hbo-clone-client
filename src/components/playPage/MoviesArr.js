@@ -46,7 +46,7 @@ const MoviesArr = (props) => {
     }
   };
   return (
-    <>
+    <div style={{ marginBottom: "400px" }}>
       <h2>{name}</h2>
       {/*  {console.log(data)} */}
       {!movies.length === 0 ? (
@@ -73,7 +73,7 @@ const MoviesArr = (props) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
