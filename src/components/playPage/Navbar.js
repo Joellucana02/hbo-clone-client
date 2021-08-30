@@ -9,9 +9,47 @@ const {
 } = apiData();
 const navbar = (props) => {
   return (
-    <>
-      <div>navbar</div>
-    </>
+    <div
+      style={{
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        position: "fixed",
+        zIndex: "55",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "80%",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            /* position: "absolute", */
+          }}
+        >
+          <div
+            style={{
+              marginRight: "16px",
+            }}
+          >
+            <button>MENU</button>
+          </div>
+          <div>SEARCH</div>
+        </div>
+        <div>HBO MAX</div>
+        <div>
+          <button>ACCOUNT</button>
+        </div>
+      </div>
+    </div>
   );
 };
 

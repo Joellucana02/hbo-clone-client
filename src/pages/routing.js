@@ -10,11 +10,10 @@ import Home from "./home";
 import Login from "./login";
 import Register from "./register";
 import Play from "./play";
-import Me from "./me";
 import Movies from "./Movies";
 import Series from "./Series";
 import Watch from "./Watch";
-
+import Info from "./Info";
 const routing = () => {
   const user = true;
   return (
@@ -26,7 +25,7 @@ const routing = () => {
         <Route path="/play" children={<Play />} />
         <Route path="/register" children={<Register />} />
         <Route path="/login" children={<Login />} />
-        <Route path="/me" children={<Me />} />
+        <Route path="/info" children={<Info />} />
         <Route path="/series" children={<Series />} />
         <Route path="/movies" children={<Movies />} />
         <Route path="/watch" children={<Watch />} />
