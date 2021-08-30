@@ -5,6 +5,7 @@ const MoviesArr = (props) => {
   const [slidesCount, setSlidesCount] = useState(0);
   let myListStyles = {
     position: "absolute",
+    width: "100%",
   };
   let myWrapperStyles = {
     background: "#822",
@@ -25,14 +26,20 @@ const MoviesArr = (props) => {
   const { name, movies } = props;
 
   const wrapperRef = useRef();
+  const listRef = useRef();
 
   const handleBtn = (direction) => {
     let distance = wrapperRef.current.getBoundingClientRect().x;
+    console.log(listRef.current.getBoundingClientRect());
     console.log(distance);
-    if (direction == "left" && slidesCount > 0) {
+    if (direction == "left" && slidesCount > 0 && distance % 210 == 0) {
       setSlidesCount((current) => current - 1);
       wrapperRef.current.style.transform = `translateX(${distance + 210}px)`;
-    } else if (direction == "right" && slidesCount < 16) {
+    } else if (
+      direction == "right" &&
+      slidesCount < 14 &&
+      (distance + 210) % 210 == 0
+    ) {
       setSlidesCount((current) => current + 1);
       wrapperRef.current.style.transform = `translateX(${distance - 210}px)`;
       console.log("right");
@@ -45,12 +52,12 @@ const MoviesArr = (props) => {
       {!movies.length === 0 ? (
         <h2>loading..</h2>
       ) : (
-        <div className="movie-item__list" style={myListStyles}>
+        <div className="movie-item__list" style={myListStyles} ref={listRef}>
           <button style={myBtnStyles} onClick={() => handleBtn("left")}>
             left
           </button>
           <button
-            style={{ ...myBtnStyles, left: "50px" }}
+            style={{ ...myBtnStyles, right: "0" }}
             onClick={() => handleBtn("right")}
           >
             right
