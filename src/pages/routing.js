@@ -13,6 +13,7 @@ import Play from "./play";
 import Me from "./me";
 import Movies from "./Movies";
 import Series from "./Series";
+import Watch from "./Watch";
 
 const routing = () => {
   const user = true;
@@ -28,6 +29,7 @@ const routing = () => {
         <Route path="/me" children={<Me />} />
         <Route path="/series" children={<Series />} />
         <Route path="/movies" children={<Movies />} />
+        <Route path="/watch" children={<Watch />} />
       </Switch>
     </Router>
   );

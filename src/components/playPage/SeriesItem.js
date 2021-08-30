@@ -1,9 +1,7 @@
 import React from "react";
-import SeriesArr from "./SeriesArr";
 import apiData from "../../api/apiData";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 const {
   ROOT_API_MOVIES,
   ROOT_API_MOVIES_POSTER,
@@ -11,9 +9,11 @@ const {
   API_KEY,
   TESTING_TOKEN,
 } = apiData();
-const MoviesItem = (props) => {
+
+const SeriesItem = (props) => {
   const [litBtn, setLitBtn] = useState("none");
   const [opaImg, setOpaImg] = useState("1");
+
   let myCardStyles = {
     //background: "#952",
     position: "relative",
@@ -57,8 +57,8 @@ const MoviesItem = (props) => {
         onMouseOut={hideBtn}
       >
         <img
-          src={ROOT_API_MOVIES_POSTER + data.poster_path}
-          alt={data.title}
+          src={data.image_thumbnail_path}
+          alt={data.name}
           style={imgStyles}
           onMouseOver={showBtn}
           onMouseOut={hideBtn}
@@ -87,4 +87,4 @@ const MoviesItem = (props) => {
   );
 };
 
-export default MoviesItem;
+export default SeriesItem;

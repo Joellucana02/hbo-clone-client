@@ -30,7 +30,7 @@ const Play = () => {
     return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&page=${num}`;
   };
   let arrByPopularityKids = (num) => {
-    return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page${num}`;
+    return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=${num}`;
   };
   let searchMovie = `${ROOT_API_MOVIES}/search/movie?api_key=${API_KEY}&query=${queryMovie}&page=${pageNumSearch}`;
   let arrByPopularityS = `${ROOT_API_TV_SHOWS}/most-popular?page=${pageNumS}`;
@@ -40,15 +40,17 @@ const Play = () => {
       try {
         const requestOne = await axios.get(arrByPopularityM(1));
         const requestTwo = await axios.get(arrByPopularityS);
-        const requestThree = await axios.get(arrByPopularityKids(1));
+        const requestThree = await axios.get(arrByPopularityKids(3));
         const requestOne1 = await axios.get(arrByPopularityM(2));
         const requestOne2 = await axios.get(arrByPopularityM(3));
+        const requestOne3 = await axios.get(arrByPopularityM(4));
         const responses = await {
           requestOne: requestOne.data,
           requestTwo: requestTwo.data,
           requestThree: requestThree.data,
           requestOne1: requestOne1.data,
           requestOne2: requestOne2.data,
+          requestOne3: requestOne3.data,
         };
         setDisplay(responses);
       } catch (error) {
@@ -62,7 +64,15 @@ const Play = () => {
   console.log(display);
   //console.log(display);
   return (
-    <div>
+    <div
+      style={{
+        width: "100vw",
+        height: "100%",
+        paddingBottom: "100px",
+        position: "relative",
+        background: "linear-gradient(to top left, #55096d, #05091f)",
+      }}
+    >
       <NavBar />
       {!display ? <h2>Loading...</h2> : <MainMovie movies={display} />}
     </div>
