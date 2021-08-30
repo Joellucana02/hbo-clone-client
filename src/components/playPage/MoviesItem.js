@@ -10,12 +10,22 @@ const {
   TESTING_TOKEN,
 } = apiData();
 const MoviesItem = (props) => {
-  const { myId, data } = props;
   const [litBtn, setLitBtn] = useState("none");
-  let myStyles = {
+  let myCardStyles = {
+    //background: "#952",
+    marginLeft: "10px",
+  };
+  let myBtn = {
     background: "#634",
     display: litBtn,
   };
+  let imgStyles = {
+    width: "200px",
+    height: "300px",
+  };
+
+  const { myId, data } = props;
+
   const showBtn = () => {
     setLitBtn("block");
   };
@@ -24,24 +34,29 @@ const MoviesItem = (props) => {
   };
   return (
     <>
-      <div className="movie-item" onMouseMove={showBtn} onMouseOut={hideBtn}>
+      <div
+        className="movie-item"
+        onMouseMove={null}
+        onMouseOut={null}
+        style={myCardStyles}
+      >
         <h2>key: {myId}</h2>
         <img
           src={ROOT_API_MOVIES_POSTER + data.poster_path}
           alt={data.title}
-          style={{ width: 200 }}
+          style={imgStyles}
         />
         <button
           className="watch-btn"
           onClick={() => console.log("watch", myId)}
-          style={myStyles}
+          style={myBtn}
         >
           watch
         </button>
         <button
           className="save-btn"
           onClick={() => console.log("save", myId)}
-          style={myStyles}
+          style={myBtn}
         >
           save
         </button>

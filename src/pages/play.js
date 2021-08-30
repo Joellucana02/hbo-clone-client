@@ -19,7 +19,9 @@ const header = {
 };
 const Play = () => {
   let [display, setDisplay] = useState(null);
-
+  let mainStyles = {
+    width: "100vw",
+  };
   let pageNumS = 1;
   let pageNumSearch = 1;
   let queryMovie = "kong";
