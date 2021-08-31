@@ -1,6 +1,8 @@
 import React from "react";
 import apiData from "../../api/apiData";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 const {
   ROOT_API_MOVIES,
   ROOT_API_MOVIES_POSTER,
@@ -55,9 +57,13 @@ const Navbar = (props) => {
           >
             <button>MENU</button>
           </div>
+
           <div>SEARCH</div>
         </div>
-        <div>HBO MAX</div>
+
+        <div>
+          <Link to="/play">HBO MAX</Link>
+        </div>
         <div>
           <button>ACCOUNT</button>
         </div>

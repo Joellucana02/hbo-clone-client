@@ -4,7 +4,7 @@ import FeaturedMovie from "./FeaturedMovie";
 import Info from "./Info";
 import MoviesArr from "./MoviesArr";
 import SeriesArr from "./SeriesArr";
-
+import { useState, useEffect } from "react";
 const MainMovie = (props) => {
   const {
     requestOne,
@@ -15,12 +15,15 @@ const MainMovie = (props) => {
     requestThree,
   } = props.movies;
   console.log(requestOne.results);
-  const moreInfo = true;
+  const [moreInfo, setMoreInfo] = useState({
+    status: false,
+    data: null,
+  });
   return (
     <>
-      {!moreInfo ? (
+      {!moreInfo.status ? (
         <div>
-          <FeaturedMovie featured={requestOne} />
+          <FeaturedMovie featured={requestOne} info={setMoreInfo} />
           <div
             style={{
               position: "relative",
@@ -30,30 +33,42 @@ const MainMovie = (props) => {
             <MoviesArr
               name={`Everybody's Talking About Them`}
               movies={requestOne.results}
+              info={setMoreInfo}
             />
 
             <MoviesArr
               name={`Must-Watch Movies`}
               movies={requestOne3.results}
+              info={setMoreInfo}
             />
 
-            <MoviesArr name={`Just Added`} movies={requestOne1.results} />
+            <MoviesArr
+              name={`Just Added`}
+              movies={requestOne1.results}
+              info={setMoreInfo}
+            />
 
             <SeriesArr
               name={`Can't-Miss Series`}
               series={requestTwo.tv_shows}
+              info={setMoreInfo}
             />
 
             <MoviesArr
               name={`Weird but Awesome`}
               movies={requestThree.results}
+              info={setMoreInfo}
             />
 
-            <MoviesArr name={`Box Office Hits`} movies={requestOne2.results} />
+            <MoviesArr
+              name={`Box Office Hits`}
+              movies={requestOne2.results}
+              info={setMoreInfo}
+            />
           </div>
         </div>
       ) : (
-        <Info featured={requestOne} />
+        <Info dataM={moreInfo.data} info={setMoreInfo} />
       )}
     </>
   );

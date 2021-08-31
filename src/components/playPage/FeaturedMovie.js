@@ -10,7 +10,7 @@ const {
   TESTING_TOKEN,
 } = apiData();
 const FeaturedMovie = (props) => {
-  const { featured } = props;
+  const { featured, info } = props;
   const fMovie = featured.results[6];
   console.log(fMovie);
   const imgMovieStyles = {
@@ -44,9 +44,10 @@ const FeaturedMovie = (props) => {
             <Link to="/watch" style={linkStyles}>
               Watch
             </Link>
-            <Link to="/watch" style={linkStyles}>
+
+            <button onClick={() => info({ status: true, data: fMovie })}>
               MORE INFO
-            </Link>
+            </button>
           </div>
         </div>
       </div>

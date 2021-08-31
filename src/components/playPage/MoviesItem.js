@@ -15,6 +15,7 @@ const MoviesItem = (props) => {
   const [litBtn, setLitBtn] = useState("none");
   const [opaImg, setOpaImg] = useState("1");
   const divRef = useRef();
+
   let myCardStyles = {
     //background: "#952",
     position: "relative",
@@ -38,7 +39,7 @@ const MoviesItem = (props) => {
     display: litBtn,
     zIndex: "67",
   };
-  const { myId, data } = props;
+  const { myId, data, info } = props;
 
   const showBtn = () => {
     setLitBtn("block");
@@ -58,7 +59,6 @@ const MoviesItem = (props) => {
         style={myCardStyles}
         onMouseOver={showBtn}
         onMouseOut={hideBtn}
-        onClick={() => console.log(divRef)}
       >
         <img
           src={ROOT_API_MOVIES_POSTER + data.poster_path}
@@ -66,6 +66,7 @@ const MoviesItem = (props) => {
           style={imgStyles}
           onMouseOver={showBtn}
           onMouseOut={hideBtn}
+          onClick={() => info({ status: true, data: data })}
         />
         <div className="btn-container" style={btnContainer}>
           <Link to="/watch" style={{ marginRight: "10px" }}>
@@ -104,3 +105,4 @@ const MoviesItem = (props) => {
 };
 
 export default MoviesItem;
+/* ) */

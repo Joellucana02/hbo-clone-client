@@ -25,7 +25,7 @@ const MoviesArr = (props) => {
     opacity: ".4",
   };
 
-  const { name, movies } = props;
+  const { name, movies, info } = props;
 
   const wrapperRef = useRef();
   const listRef = useRef();
@@ -71,7 +71,7 @@ const MoviesArr = (props) => {
               ref={wrapperRef}
             >
               {movies.map((el) => (
-                <MoviesItem key={el.id} myId={el.id} data={el} />
+                <MoviesItem key={el.id} myId={el.id} data={el} info={info} />
               ))}
             </div>
           </div>
