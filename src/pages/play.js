@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "./../components/playPage/Navbar";
-import MainMovie from "./../components/playPage/MainMovie";
+import NavBar from "../components/playPage/Navbar";
+import MainMovie from "../components/playPage/MainMovie";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiData from "../api/apiData";

@@ -1,8 +1,11 @@
-import Routing from "./pages/routing";
+import { AuthContextProvider } from "./context/AuthContext";
+import Routing from "./pages/Routing";
 function App() {
   return (
     <div>
-      <Routing />
+      <AuthContextProvider>
+        <Routing />
+      </AuthContextProvider>
     </div>
   );
 }

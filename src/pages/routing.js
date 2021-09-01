@@ -7,9 +7,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import Home from "./home";
-import Login from "./login";
-import Register from "./register";
-import Play from "./play";
+import Login from "./Login";
+import Register from "./Register";
+import Play from "./Play";
 import Movies from "./Movies";
 import Series from "./Series";
 import Watch from "./Watch";
