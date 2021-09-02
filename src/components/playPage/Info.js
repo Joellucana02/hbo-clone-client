@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import apiData from "../../api/apiData";
 
@@ -13,7 +13,7 @@ const {
 const Info = (props) => {
   const { dataM, info } = props;
   /* const fMovie = dataM.results[6]; */
-
+  const infoRef = useRef();
   console.log(dataM);
   const imgMovieStyles = {
     width: "100%",
@@ -24,9 +24,20 @@ const Info = (props) => {
     fontSize: "1.2rem",
     marginRight: "30px",
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      /* behavior: "smooth", */
+    });
+  }, []);
   return (
     <div>
-      <div className="f-movie-wrapper" style={{ position: "relative" }}>
+      <div
+        className="f-movie-wrapper"
+        style={{ position: "relative" }}
+        ref={infoRef}
+      >
         <button
           style={{
             position: "absolute",

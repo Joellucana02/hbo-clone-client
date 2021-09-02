@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import apiData from "../../api/apiData";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { logout } from "./../../context/AuthActions";
 
 const {
   ROOT_API_MOVIES,
@@ -11,13 +13,21 @@ const {
   TESTING_TOKEN,
 } = apiData();
 const Navbar = (props) => {
+  const { user, dispatch } = useContext(AuthContext);
   const [opacity, setOpacity] = useState("none");
+  const { searchTrue, setInputSearch, setSearchTrue } = props;
   const myBackground = (color) => {
     if (color == "none") {
       setOpacity("hsla(40, 60%, 10%, .5) ");
     } else if (color == "color") {
       setOpacity("none");
     }
+  };
+  const inputStyle = {
+    background: "#333",
+  };
+  const handleTrue = (e) => {
+    console.log("handle true");
   };
   return (
     <div
@@ -55,17 +65,46 @@ const Navbar = (props) => {
               marginRight: "16px",
             }}
           >
-            <button>MENU</button>
+            <button className="nav-btn">
+              <Link to="/play">MENU</Link>
+            </button>
           </div>
-
-          <div>SEARCH</div>
+          {!searchTrue ? (
+            <div>
+              <button className="nav-btn" onClick={handleTrue}>
+                <Link to="/search">SEARCH</Link>
+              </button>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                id="mySearch"
+                name="mySearch"
+                placeholder="What are you looking for?"
+                onChange={(e) => setInputSearch(e.target.value)}
+                style={inputStyle}
+              />
+            </div>
+          )}
         </div>
 
+        {!searchTrue ? (
+          <div>
+            <Link to="/play">
+              <button className="nav-btn">HBO MAX</button>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
         <div>
-          <Link to="/play">HBO MAX</Link>
-        </div>
-        <div>
-          <button>ACCOUNT</button>
+          <button className="nav-btn" style={{ marginRight: "1rem" }}>
+            {user.username}
+          </button>
+          <button onClick={() => dispatch(logout())} className="nav-btn">
+            LOGOUT
+          </button>
         </div>
       </div>
     </div>

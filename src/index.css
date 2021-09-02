@@ -18,7 +18,13 @@ body {
   background: #888;
   overflow-x: hidden;
 }
-
+.nav-btn {
+  background: none;
+  border: none;
+}
+button {
+  cursor: pointer;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

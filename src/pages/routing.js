@@ -14,6 +14,7 @@ import Movies from "./Movies";
 import Series from "./Series";
 import Watch from "./Watch";
 import { AuthContext } from "../context/AuthContext";
+import Search from "./Search";
 
 const Routing = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,6 @@ const Routing = () => {
       {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
       <Switch>
-        {console.log(user)}
         <Route exact path="/">
           {user ? <Redirect to="/play" /> : <Home />}
         </Route>
@@ -37,9 +37,10 @@ const Routing = () => {
         {user ? (
           <>
             <Route path="/play" children={<Play />} />
-            <Route path="series" children={<Series />} />
-            <Route path="movies" children={<Movies />} />
-            <Route path="watch" children={<Watch />} />
+            <Route path="/series" children={<Series />} />
+            <Route path="/movies" children={<Movies />} />
+            <Route path="/watch" children={<Watch />} />
+            <Route path="/search" children={<Search />} />
           </>
         ) : (
           <Redirect to="/" />

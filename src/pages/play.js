@@ -19,6 +19,7 @@ const header = {
 };
 const Play = () => {
   let [display, setDisplay] = useState(null);
+
   let mainStyles = {
     width: "100vw",
   };
@@ -32,7 +33,6 @@ const Play = () => {
   let arrByPopularityKids = (num) => {
     return `${ROOT_API_MOVIES}/discover/movie?api_key=${API_KEY}&certification_country=US&certification.lte=G&sort_by=popularity.desc&page=${num}`;
   };
-  let searchMovie = `${ROOT_API_MOVIES}/search/movie?api_key=${API_KEY}&query=${queryMovie}&page=${pageNumSearch}`;
   let arrByPopularityS = `${ROOT_API_TV_SHOWS}/most-popular?page=${pageNumS}`;
 
   useEffect(() => {
@@ -56,13 +56,9 @@ const Play = () => {
       } catch (error) {
         console.log(error);
       }
-      /* const res = await axios.get(arrByPopularityM);
-      const data = await res.data; */
     };
     fetchApi();
   }, []);
-  console.log(display);
-  //console.log(display);
   return (
     <div
       style={{

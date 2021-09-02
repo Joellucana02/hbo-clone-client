@@ -45,7 +45,10 @@ const FeaturedMovie = (props) => {
               Watch
             </Link>
 
-            <button onClick={() => info({ status: true, data: fMovie })}>
+            <button
+              onClick={() => info({ status: true, data: fMovie })}
+              className="nav-btn"
+            >
               MORE INFO
             </button>
           </div>
