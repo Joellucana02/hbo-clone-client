@@ -8,7 +8,7 @@ export const loginAction = () => {
 
 export const loginSuccess = (user) => {
   return {
-    type: "LOGIN_SUCESS",
+    type: "LOGIN_SUCCESS",
     payload: user,
   };
 };
@@ -16,6 +16,11 @@ export const loginSuccess = (user) => {
 export const loginError = () => {
   return {
     type: "LOGIN_ERROR",
-    error: "error to login",
+  };
+};
+
+export const logout = () => {
+  return {
+    type: "LOGOUT",
   };
 };

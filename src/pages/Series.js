@@ -1,7 +1,7 @@
 import React from "react";
 
-const mainHome = () => {
-  return <div></div>;
+const Series = () => {
+  return <div>Series</div>;
 };
 
-export default mainHome;
+export default Series;

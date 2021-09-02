@@ -53,7 +53,7 @@ const Info = (props) => {
               {dataM.overview}
             </p>
             <p style={{ wordSpacing: " 10px", marginBottom: "15px" }}>
-              1HR 58MIN 13+ 2013 HD 6.3
+              1HR 58MIN 13+ 2021 HD 6.3
             </p>
           </div>
           <div className="btn-box">
