@@ -10,7 +10,7 @@ const DisplayMovies = (props) => {
         <h2 style={{ marginBottom: "1rem" }}>HBO Max Recommends</h2>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {results.map((el) => (
-            <DisplayItems key={el.id} data={el} myId={el.id} info={info} />
+            <DisplayItems key={el.id} data={el} myId={el.id} infoM={info} />
           ))}
         </div>
       </div>

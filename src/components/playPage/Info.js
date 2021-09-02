@@ -39,6 +39,7 @@ const Info = (props) => {
         ref={infoRef}
       >
         <button
+          className="nav-btn"
           style={{
             position: "absolute",
             zIndex: "70",
@@ -71,7 +72,15 @@ const Info = (props) => {
             <Link to="/watch" style={linkStyles}>
               Watch
             </Link>
-            <button>SAVE</button>
+            <button
+              className="nav-btn"
+              onClick={(e) => {
+                console.log("save", dataM.id);
+                e.stopPropagation();
+              }}
+            >
+              SAVE
+            </button>
           </div>
         </div>
       </div>

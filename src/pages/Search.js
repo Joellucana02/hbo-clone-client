@@ -4,6 +4,7 @@ import DisplayMovies from "../components/searchPage/DisplayMovies";
 import { useState, useEffect } from "react";
 import apiData from "../api/apiData";
 import axios from "axios";
+import Info from "../components/playPage/Info";
 const {
   ROOT_API_MOVIES,
   ROOT_API_MOVIES_POSTER,
@@ -41,6 +42,7 @@ const Search = () => {
       const rawData = await axios.get(one(5));
       const data = rawData.data;
       console.log(data);
+      setSearchResult("");
       setSearchResult(data);
     };
     searchCall();
@@ -55,6 +57,13 @@ const Search = () => {
           setInputSearch={setInputSearch}
           searchTrue={searchTrue}
         />
+        {!moreInfo.status ? (
+          ""
+        ) : (
+          <>
+            <Info dataM={moreInfo.data} info={setMoreInfo} />
+          </>
+        )}
         {!searchResult ? (
           <h2>LOADING...</h2>
         ) : (
@@ -70,3 +79,5 @@ export default Search;
 {
   /*  */
 }
+
+/*  */

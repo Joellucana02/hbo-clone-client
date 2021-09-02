@@ -11,7 +11,7 @@ const {
   TESTING_TOKEN,
 } = apiData();
 const DisplayItems = (props) => {
-  const { myId, data, info } = props;
+  const { myId, data, infoM } = props;
 
   const [litBtn, setLitBtn] = useState("none");
   const [opaImg, setOpaImg] = useState("1");
@@ -52,24 +52,19 @@ const DisplayItems = (props) => {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <div
-          className="movie-item"
-          style={myCardStyles}
-          onMouseOver={showBtn}
-          onMouseOut={hideBtn}
-        >
+        <div className="movie-item" style={myCardStyles}>
           <img
             src={ROOT_API_MOVIES_POSTER + data.poster_path}
             alt={data.title}
             style={imgStyles}
             onMouseOver={showBtn}
             onMouseOut={hideBtn}
-            onClick={() => info({ status: true, data: data })}
+            onClick={() => infoM({ status: true, data: data })}
           />
           <div className="btn-container" style={btnContainer}>
             <Link to="/watch" style={{ marginRight: "10px" }}>
               <button
-                className="save-btn"
+                className="nav-btn"
                 onClick={(e) => {
                   console.log("save", myId);
                   e.stopPropagation();
@@ -80,7 +75,7 @@ const DisplayItems = (props) => {
               </button>
             </Link>
             <button
-              className="save-btn"
+              className="nav-btn"
               onClick={(e) => {
                 console.log("save", myId);
                 e.stopPropagation();

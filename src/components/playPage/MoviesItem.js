@@ -71,7 +71,7 @@ const MoviesItem = (props) => {
         <div className="btn-container" style={btnContainer}>
           <Link to="/watch" style={{ marginRight: "10px" }}>
             <button
-              className="save-btn"
+              className="nav-btn"
               onClick={(e) => {
                 console.log("save", myId);
                 e.stopPropagation();
@@ -81,15 +81,8 @@ const MoviesItem = (props) => {
               WATCH
             </button>
           </Link>
-          {/* <button
-            className="watch-btn"
-            onClick={() => console.log("watch", myId)}
-            style={myBtn}
-          >
-            watch
-          </button> */}
           <button
-            className="save-btn"
+            className="nav-btn"
             onClick={(e) => {
               console.log("save", myId);
               e.stopPropagation();
