@@ -66,7 +66,7 @@ const Navbar = (props) => {
             }}
           >
             <button className="nav-btn">
-              <Link to="/play">MENU</Link>
+              <Link to={`/play/${user._id}`}>MENU</Link>
             </button>
           </div>
           {!searchTrue ? (
@@ -91,7 +91,7 @@ const Navbar = (props) => {
 
         {!searchTrue ? (
           <div>
-            <Link to="/play">
+            <Link to={`/play/${user._id}`}>
               <button className="nav-btn">HBO MAX</button>
             </Link>
           </div>

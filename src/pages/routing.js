@@ -24,19 +24,19 @@ const Routing = () => {
               renders the first one that matches the current URL. */}
       <Switch>
         <Route exact path="/">
-          {user ? <Redirect to="/play" /> : <Home />}
+          {user ? <Redirect to={`/play/${user._id}`} /> : <Home />}
         </Route>
 
         <Route path="/login">
-          {user ? <Redirect to="/play" /> : <Login />}
+          {user ? <Redirect to={`/play/${user._id}`} /> : <Login />}
         </Route>
 
         <Route path="/register">
-          {user ? <Redirect to="/play" /> : <Register />}
+          {user ? <Redirect to={`/play/${user._id}`} /> : <Register />}
         </Route>
         {user ? (
           <>
-            <Route path="/play" children={<Play />} />
+            <Route path={`/play/${user._id}`} children={<Play />} />
             <Route path="/series" children={<Series />} />
             <Route path="/movies" children={<Movies />} />
             <Route path="/watch" children={<Watch />} />

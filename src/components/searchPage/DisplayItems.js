@@ -59,7 +59,13 @@ const DisplayItems = (props) => {
             style={imgStyles}
             onMouseOver={showBtn}
             onMouseOut={hideBtn}
-            onClick={() => infoM({ status: true, data: data })}
+            onClick={() => {
+              infoM({ status: true, data: data });
+              window.scrollTo({
+                top: 0,
+                /* behavior: "smooth", */
+              });
+            }}
           />
           <div className="btn-container" style={btnContainer}>
             <Link to="/watch" style={{ marginRight: "10px" }}>

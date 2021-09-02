@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import SeriesArr from "./SeriesArr";
 import apiData from "../../api/apiData";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-
+import { MyList } from "../../context/ApiAuthCalls";
+import { AuthContext } from "../../context/AuthContext";
 const {
   ROOT_API_MOVIES,
   ROOT_API_MOVIES_POSTER,
@@ -15,6 +16,8 @@ const MoviesItem = (props) => {
   const [litBtn, setLitBtn] = useState("none");
   const [opaImg, setOpaImg] = useState("1");
   const divRef = useRef();
+
+  const { user } = useContext(AuthContext);
 
   let myCardStyles = {
     //background: "#952",
@@ -86,6 +89,8 @@ const MoviesItem = (props) => {
             onClick={(e) => {
               console.log("save", myId);
               e.stopPropagation();
+              console.log(myId.toString());
+              MyList({ ...user }, myId.toString());
             }}
             style={myBtn}
           >
