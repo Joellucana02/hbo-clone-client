@@ -46,7 +46,7 @@ const Login = () => {
           onClick={(e) => handleLogin(e)}
           disabled={isFetching}
         >
-          LOGIN------
+          LOGIN
         </button>
       </form>
     </>

@@ -1,8 +1,19 @@
 import React from "react";
 import MoviesItem from "./MoviesItem";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { getMyList } from "../../context/ApiAuthCalls";
+import apiData from "./../../api/apiData";
+import axios from "axios";
+const {
+  ROOT_API_MOVIES,
+  ROOT_API_MOVIES_POSTER,
+  ROOT_API_TV_SHOWS,
+  API_KEY,
+  TESTING_TOKEN,
+} = apiData();
 const MoviesArr = (props) => {
   const [slidesCount, setSlidesCount] = useState(0);
+
   let myListStyles = {
     /* position: "absolute", */
     width: "100%",
@@ -25,8 +36,8 @@ const MoviesArr = (props) => {
     opacity: ".4",
   };
 
-  const { name, movies, info } = props;
-
+  const { name, movies, info, superInfoArr } = props;
+  const [infoS, setInfoS] = useState([]);
   const wrapperRef = useRef();
   const listRef = useRef();
 
@@ -47,6 +58,36 @@ const MoviesArr = (props) => {
       console.log("right");
     }
   };
+
+  const headers = {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("jwt")}`,
+    },
+  };
+  useEffect(() => {
+    if (!superInfoArr) {
+      console.log("hello world from Main");
+    } else {
+      const getMyList = async (arrList) => {
+        try {
+          let promises = [];
+          for (let i = 0; i < arrList.length; i++) {
+            promises.push(
+              await axios.get(
+                `${ROOT_API_MOVIES}/movie/${arrList[i]}?api_key=${API_KEY}`,
+                headers
+              )
+            );
+          }
+          const AllPromise = await Promise.all(promises);
+          setInfoS(AllPromise);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getMyList(superInfoArr);
+    }
+  }, [superInfoArr]);
   return (
     <div style={{ marginBottom: "50px", position: "relative" }}>
       <h2>{name}</h2>
@@ -70,6 +111,16 @@ const MoviesArr = (props) => {
               style={myWrapperStyles}
               ref={wrapperRef}
             >
+              {infoS
+                ? infoS.map((el) => (
+                    <MoviesItem
+                      key={el.data.id}
+                      myId={el.data.id}
+                      data={el.data}
+                      info={info}
+                    />
+                  ))
+                : ""}
               {movies.map((el) => (
                 <MoviesItem key={el.id} myId={el.id} data={el} info={info} />
               ))}
@@ -89,3 +140,12 @@ export default MoviesArr;
     { width: 768, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ]; */
+/* 
+infoS.map((el) => (
+                    <MoviesItem
+                      key={el.id}
+                      myId={el.id}
+                      data={el.data}
+                      info={info}
+                    />
+                  )) */

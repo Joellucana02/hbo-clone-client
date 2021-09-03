@@ -1,15 +1,26 @@
 import axios from "axios";
-import { useContext } from "react";
-
-import { loginSuccess, loginError, loginAction } from "./AuthActions";
+import { useState, useEffect, useRef, useContext } from "react";
+import { loginSuccess, loginError, loginAction, userList } from "./AuthActions";
 
 export const Authlogin = async (user, dispatch) => {
   dispatch(loginAction());
   try {
     const myUser = await axios.post("http://localhost:3009/api/v1/login", user);
-    console.log("api auth call");
     dispatch(loginSuccess(myUser.data.data));
     sessionStorage.setItem("jwt", myUser.data.jwt);
+  } catch (error) {
+    dispatch(loginError);
+  }
+};
+export const AuthRegister = async (user, dispatch) => {
+  dispatch(loginAction());
+  try {
+    const newUser = await axios.post(
+      "http://localhost:3009/api/v1/signup",
+      user
+    );
+    dispatch(loginSuccess(newUser.data.data));
+    sessionStorage.setItem("jwt", newUser.data.jwt);
   } catch (error) {
     dispatch(loginError);
   }
@@ -31,3 +42,27 @@ export const MyList = async (user, addToList) => {
     console.log(error);
   }
 };
+/* export const getMyList = async (arrList) => {
+  try {
+    let promises = [];
+    for (let i = 0; i < arrList.length; i++) {
+      promises.push(
+        await axios.get(
+          `${ROOT_API_MOVIES}/movie/${arrList[i]}?api_key=${API_KEY}`,
+          headers
+        )
+      );
+    }
+    const AllPromise = await Promise.all(promises);
+    console.log(AllPromise);
+  } catch (error) {
+    console.log(error);
+  }
+}; */
+/* .then(function handleData(data) {
+  return fetch("example.api") // should be returned 1 time
+    .then((response) => {
+      if (response.ok) return response.json();
+      throw new Error(response.statusText);
+    });
+}) */

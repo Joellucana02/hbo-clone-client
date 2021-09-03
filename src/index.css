@@ -25,6 +25,9 @@ body {
 button {
   cursor: pointer;
 }
+input {
+  background: #333;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -24,3 +24,10 @@ export const logout = () => {
     type: "LOGOUT",
   };
 };
+
+export const userList = (listArr) => {
+  return {
+    type: "GET_USER_LIST",
+    payload: listArr,
+  };
+};

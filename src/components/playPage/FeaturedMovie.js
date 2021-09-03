@@ -11,7 +11,7 @@ const {
 } = apiData();
 const FeaturedMovie = (props) => {
   const { featured, info } = props;
-  const fMovie = featured.results[6];
+  const fMovie = featured.results[9];
   console.log(fMovie);
   const imgMovieStyles = {
     width: "100%",
