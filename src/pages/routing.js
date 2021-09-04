@@ -31,7 +31,7 @@ const Routing = () => {
           {user ? <Redirect to={`/play/${user._id}`} /> : <Login />}
         </Route>
 
-        <Route path="/register">
+        <Route path="/signup">
           {user ? <Redirect to={`/play/${user._id}`} /> : <Register />}
         </Route>
         {user ? (

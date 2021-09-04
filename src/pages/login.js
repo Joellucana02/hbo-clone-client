@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Authlogin } from "../context/ApiAuthCalls";
 import { AuthContext } from "../context/AuthContext";
+
 const Login = () => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const { isFetching, dispatch } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(formValues);
     Authlogin(formValues, dispatch);
     console.log(isFetching);
   };
@@ -18,7 +19,14 @@ const Login = () => {
   return (
     <>
       <h2>Login</h2>
-      <form>
+      <form
+        style={{
+          display: "flex",
+          margin: "auto",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <input
           type="email"
           id="email"
@@ -49,6 +57,7 @@ const Login = () => {
           LOGIN
         </button>
       </form>
+      <Link to="/signup">Dont have an account</Link>
     </>
   );
 };

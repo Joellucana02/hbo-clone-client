@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { AuthRegister } from "../context/ApiAuthCalls";
 import { AuthContext } from "../context/AuthContext";
 
@@ -21,7 +22,14 @@ const Register = () => {
   return (
     <>
       <h2>Register</h2>
-      <form>
+      <form
+        style={{
+          display: "flex",
+          margin: "auto",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <input
           type="text"
           id="fname"
@@ -63,10 +71,12 @@ const Register = () => {
           value="LOGIN"
           onClick={(e) => handleLogin(e)}
           disabled={isFetching}
+          style={{ background: "#333" }}
         >
           SIGNUP
         </button>
       </form>
+      <Link to="/login">Already have an account</Link>
     </>
   );
 };

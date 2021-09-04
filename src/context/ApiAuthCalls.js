@@ -5,7 +5,10 @@ import { loginSuccess, loginError, loginAction, userList } from "./AuthActions";
 export const Authlogin = async (user, dispatch) => {
   dispatch(loginAction());
   try {
-    const myUser = await axios.post("http://localhost:3009/api/v1/login", user);
+    const myUser = await axios.post(
+      "https://whomovies.herokuapp.com/api/v1/login",
+      user
+    );
     dispatch(loginSuccess(myUser.data.data));
     sessionStorage.setItem("jwt", myUser.data.jwt);
   } catch (error) {
@@ -16,7 +19,7 @@ export const AuthRegister = async (user, dispatch) => {
   dispatch(loginAction());
   try {
     const newUser = await axios.post(
-      "http://localhost:3009/api/v1/signup",
+      "https://whomovies.herokuapp.com/api/v1/signup",
       user
     );
     dispatch(loginSuccess(newUser.data.data));
@@ -33,7 +36,7 @@ const headers = {
 export const MyList = async (user, addToList) => {
   try {
     const updateList = await axios.post(
-      `http://localhost:3009/api/v1/users/${user._id}`,
+      `https://whomovies.herokuapp.com/api/v1/users/${user._id}`,
       { comments: addToList },
       headers
     );
